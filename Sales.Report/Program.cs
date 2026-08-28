@@ -21,7 +21,14 @@ while (true)
     }
     else
     {
-        Console.WriteLine("incorrect amount");
+        Console.WriteLine("Ogiltig summa");
         
     }
-}    
+
+}
+
+Console.WriteLine("Dagens försäljningar");
+for (int i = 0; i < productNames.Count; i++)
+{
+    Console.WriteLine($"{productNames[i]}: {saleAmounts[i]} kr");
+}
