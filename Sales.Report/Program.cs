@@ -7,11 +7,11 @@ Console.WriteLine();
 while (true)
 {
     Console.WriteLine("Ange produktnamn eller skriv klar");
-    string name = Console.ReadLine();
+    string name = Console.ReadLine()!;
     if (name == "klar")
         break;
     Console.WriteLine("Ange försäljningsbeloppet");
-    string salesamount = Console.ReadLine();
+    string salesamount = Console.ReadLine()!;
 
     if (decimal.TryParse(salesamount, out decimal result))
     {
@@ -22,26 +22,36 @@ while (true)
     else
     {
         Console.WriteLine("Ogiltig summa");
-        
+
     }
 
 }
 
+Console.Clear();
 Console.WriteLine("Dagens försäljningar");
 for (int i = 0; i < productNames.Count; i++)
 {
     Console.WriteLine($"{productNames[i]}: {saleAmounts[i]} kr");
 }
-
+Console.WriteLine("");
 Console.WriteLine("Sammanfattning");
 Console.WriteLine($"Antal försäljningar: {productNames.Count}");
 
 Console.WriteLine($"Total försäljning: {saleAmounts.Sum()} kr");
 
 Console.WriteLine($"Genomsnittlig försäljning: {saleAmounts.Average()} kr");
-Console.WriteLine($"Största försäljningen: {saleAmounts.Max()} kr");
 
+var highestSaleIndex = 0;
 
+for (int i = 0; i < saleAmounts.Count; i++)
+{
+    if (saleAmounts[i] > saleAmounts[highestSaleIndex])
+    {
+        highestSaleIndex = i;
+    }
+}
+
+Console.WriteLine($"Största försäljningen: {productNames[highestSaleIndex]} - {saleAmounts[highestSaleIndex]} kr");
 
 var bigSales = saleAmounts.Where(s => s > 1000).Count();
 Console.WriteLine($"sales over 1000 kr: {bigSales}");
@@ -61,6 +71,6 @@ switch (totalSale)
         Console.WriteLine("Dagens försäljning är hög");
         break;
 
-        default:
+    default:
         break;
 }
