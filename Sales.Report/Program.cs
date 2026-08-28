@@ -6,18 +6,22 @@ Console.WriteLine();
 
 while (true)
 {
-    Console.WriteLine("Ange produktnamn");
-    string namn = Console.ReadLine();
+    Console.WriteLine("Ange produktnamn eller skriv klar");
+    string name = Console.ReadLine();
+    if (name == "klar")
+        break;
     Console.WriteLine("Ange försäljningsbeloppet");
     string salesamount = Console.ReadLine();
 
     if (decimal.TryParse(salesamount, out decimal result))
     {
-        productNames.Add(namn);
+        Console.WriteLine("Försäljningen har registrerats");
+        productNames.Add(name);
         saleAmounts.Add(result);
     }
     else
     {
         Console.WriteLine("incorrect amount");
+        
     }
 }    
