@@ -1,1 +1,3 @@
-﻿Console.WriteLine("Hello, World!");
+﻿List<string> productNames = [];
+List<decimal> saleAmounts = [];
+
